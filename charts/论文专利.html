@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/echarts.js"></script>
+    <script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <p>（1）各种论文数量（期刊论文 会议论文 学位论文 其他（2）各类专利数量（发明专利 实用新型专利 外观设计专利 其他）专利转化金额（3）各类项目（国家级 省级 校级）数量（4）著作（5）获奖饼：论文专利项目获奖著作环：细分类
+    </p>
+    <div id="root" style="height: 600px;width: 100%"></div>
+</body>
+<script type="text/javascript">
+$.getJSON("https://www.easy-mock.com/mock/5a472c8ccac9733415180409/lunwens", function(data) {
+
+    var mychat = echarts.init(document.getElementById("root"));
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a}<br/?{b}:{c}({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: data.names
+        },
+        series: [{
+            name: '来源1',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: [0, '30%'],
+            label: {
+                normal: {
+                    position: 'inner'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data: data.mypie1
+        }, {
+            name: '来源2',
+            type: 'pie',
+            radius: ['40%', '50%'],
+            data: data.mypie2
+        }]
+    };
+    mychat.setOption(option, true);
+})
+</script>
+
+</html>

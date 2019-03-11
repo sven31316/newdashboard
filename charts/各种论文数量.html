@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+<link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">  <script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+  <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+  <script src="https://img.hcharts.cn/highcharts/highcharts-3d.js"></script>
+  <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+  <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+  <script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
+</head>
+<body>
+
+  <div id="container"><p>（1）各种论文数量（期刊论文 会议论文 学位论文 其他（2）各类专利数量（发明专利 实用新型专利 外观设计专利 其他）专利转化金额（3）各类项目（国家级 省级 校级）数量（4）著作（5）获奖饼：论文专利项目获奖著作环：细分类</p></div>
+<div id="sliders">
+    <table>
+        <tr>
+            <td>α 角（内旋转角）</td>
+            <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
+        </tr>
+        <tr>
+            <td>β 角（外旋转角）</td>
+            <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
+        </tr>
+        <tr>
+            <td>深度</td>
+            <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
+        </tr>
+    </table>
+</div>
+
+  <script>
+  $(function () {
+    // Set up the chart
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container',
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+            }
+        },
+        title: {
+            text: '各种论文数量'
+        },
+        subtitle: {
+            text: '可通过滑动下方滑块测试'
+        },
+        plotOptions: {
+            column: {
+                depth: 25
+            }
+        },
+        series: [{
+            name:'图例1',
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        }]
+    });
+    function showValues() {
+        $('#alpha-value').html(chart.options.chart.options3d.alpha);
+        $('#beta-value').html(chart.options.chart.options3d.beta);
+        $('#depth-value').html(chart.options.chart.options3d.depth);
+    }
+    // Activate the sliders
+    $('#sliders input').on('input change', function () {
+        chart.options.chart.options3d[this.id] = this.value;
+        showValues();
+        chart.redraw(false);
+    });
+    showValues();
+});
+</script>
+</body>
+</html>

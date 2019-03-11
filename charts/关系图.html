@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="root" style="height: 600px;width: 100%;"></div>
+</body>
+<script type="text/javascript">
+var mycha = echarts.init(document.getElementById("root"));
+option = {
+    title: {
+        text: '关系图'
+    },
+    tooltip: {},
+    animationDurationUpdate: 1500,
+    animationEasingUpdate: 'quintincInOut',
+    label: {
+        normal: {
+            show: true,
+            textStyle: {
+                fontSize: 12
+            }
+        }
+    },
+    legend: {
+        x: 'center',
+        show: false,
+        data: ["朋友", "战友", "亲戚"]
+    },
+    series: [{
+        type: 'graph',
+        layout: 'force',
+        symbolSize: 45,
+        focusNodeAdjacency: true,
+        roam: true,
+        categories: [{
+            name: '朋友',
+            itemStyle: {
+                normal: {
+                    color: "#009800"
+                }
+            }
+        }, {
+            name: '战友',
+            itemStyle: {
+                normal: {
+                    color: "#4592ff"
+                }
+            }
+        }, {
+            name: '亲戚',
+            itemStyle: {
+                normal: {
+                    color: '#3592f'
+                }
+            }
+        }],
+        label: {
+            normal: {
+                show: true,
+                textStyle: {
+                    fontSize: 12
+                }
+            }
+        },
+        force: {
+            repulsion: 1000
+        },
+        edgeSymboleSize: [4, 50],
+        edgeLabel: {
+            normal: {
+                show: true,
+                textStyle: {
+                    fontSize: 10
+                },
+                formatter: "{c}"
+            }
+        },
+        data: [{
+                "name": "样老师",
+                "draggable": true
+            },
+            {
+                "name": "张老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "杨老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "网老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "邓老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "陈老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "赵老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "徐老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "正老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "郑老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "李老师",
+                "category": 1,
+                "draggable": true
+            },
+            {
+                "name": "冯老师",
+                "category": 1,
+                "draggable": true
+            }
+        ],
+        links: [{
+            "source": 0,
+            "target": 1,
+            "category": 0,
+            "value": "朋友"
+        }, {
+            "source": 0,
+            "target": 2,
+            "value": "战友"
+        }, {
+            "source": 0,
+            "target": 3,
+            "value": "房东"
+        }, {
+            "source": 0,
+            "target": 4,
+            "value": "朋友"
+        }, {
+            "source": 0,
+            "target": 5,
+            "value": "朋友"
+        }, {
+            "source": 4,
+            "target": 5,
+            "value": "姑姑"
+        }, {
+            "source": 2,
+            "target": 8,
+            "value": "叔叔"
+        }, {
+            "source": 0,
+            "target": 12,
+            "value": "朋友"
+        }, {
+            "source": 6,
+            "target": 11,
+            "value": "爱人"
+        }, {
+            "source": 6,
+            "target": 3,
+            "value": "朋友"
+        }, {
+            "source": 7,
+            "target": 5,
+            "value": "朋友"
+        }, {
+            "source": 9,
+            "target": 10,
+            "value": "朋友"
+        }, {
+            "source": 3,
+            "target": 10,
+            "value": "朋友"
+        }, {
+            "source": 2,
+            "target": 11,
+            "value": "同学"
+        }],
+        lineStyle: {
+            normal: {
+                opacity: 0.9,
+                width: 1,
+                curveness: 0
+            }
+        }
+    }]
+};
+mycha.setOption(option, true)
+</script>
+
+</html>

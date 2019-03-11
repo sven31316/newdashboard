@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <script>
+    </script>
+    <link rel="stylesheet" href="">
+    <script type="text/javascript" src="js/echarts.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <p>科研成果总量统计一、安徽省科研成果总量（论文 专利 著作 获奖 项目）</p>
+    <p>士大夫的说法</p>
+    <div id="root" style="height: 400px;width: 600px"></div>
+</body>
+<script type="text/javascript">
+/*data.json:
+    {
+
+        "data1":[122, 223, 141, 132, 154, 134, 233],
+        "data2":[175, 145, 165, 175, 123, 123, 171]
+    }*/
+// app.title = '折柱混合';
+$.getJSON('https://www.easy-mock.com/mock/5a472c8ccac9733415180409/dian', function(data) {
+    var myChart = echarts.init(document.getElementById("root"));
+    var mydata = data;
+    console.log(data)
+
+    var data1 = mydata.data1;
+    var data2 = mydata.data2;
+    console.log(data);
+    //    var data1 = [122, 223, 141, 132, 154, 134, 233];
+    // var data2 = [175, 145, 165, 175, 123, 123, 171];
+    option = {
+        color: ['#059500', '#e43d4f'],
+        title: {
+            text: '这里是你的标题'
+
+        },
+        tooltip: {
+            trigger: 'axis',
+            axiesPointer: {
+                type: 'shadow' //line or shadow
+            }
+        },
+        toolbox: {
+            feature: {
+                dataView: {
+                    show: true,
+                    readOnly: false
+                },
+                magicType: {
+                    show: true,
+                    type: ['line', 'bar']
+                },
+                restore: {
+                    show: true
+                },
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        legend: {
+            data: ['实际值', '目标值']
+        },
+        xAxis: [{
+            type: 'category',
+            name: 'month',
+            data: ['jan', 'Feb', 'mar', 'apr', 'may', 'jun', 'july'],
+            axiesPointer: {
+                type: 'shadow'
+            }
+        }],
+        yAxis: [{
+            type: 'value',
+            name: 'consume',
+            min: 0,
+            max: 250,
+            interval: 50,
+            axisLabel: {
+                formatter: '{value}'
+            }
+        }],
+        series: [{
+            name: '实际值',
+            type: 'bar',
+            barWidth: 20,
+            itemStyle: {
+                normal: {
+                    color: function(item) {
+                        if (data1[item.dataIndex] > data2[item.dataIndex]) {
+                            return '#e43d4f';
+                        } else {
+                            return '#ce9d40';
+                        } // body...
+                    }
+                }
+            },
+            data: data1
+        }, {
+            name: '目标值',
+            type: 'line',
+            data: data2,
+            itemStyle: {
+                normal: {
+                    color: '#e43d4f'
+                }
+
+            }
+        }]
+    };
+    myChart.setOption(option, true);
+})
+</script>
+
+</html>

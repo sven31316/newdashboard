@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script type="text/javascript" src="js/echarts.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <div id="root" style="height: 400px;width: 400px"></div>
+</body>
+<script type="text/javascript">
+var myChart = echarts.init(document.getElementById('root'));
+// 显示标题，图例和空的坐标轴
+myChart.setOption({
+    title: {
+        text: '异步数据加载示例'
+    },
+    tooltip: {},
+    legend: {
+        data: ['销量']
+    },
+    xAxis: {
+        data: []
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: []
+    }]
+});
+
+// 异步加载数据
+$.get('https://www.easy-mock.com/mock/5a472c8ccac9733415180409/data1').done(function(data) {
+    // 填入数据
+    myChart.setOption({
+        xAxis: {
+            data: data.categories
+        },
+        series: [{
+            // 根据名字对应到相应的系列
+            name: '销量',
+            data: data.data
+        }]
+    });
+});
+</script>
+
+</html>

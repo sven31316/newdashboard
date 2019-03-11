@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>科研系统</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="lib/jquery/jquery-3.2.1.js"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+</head>
+
+<body>
+<!-- 顶部开始 -->
+<div class="container">
+    <div class="logo"><a href="./index.html">科研系统</a></div>
+    <div class="left_open">
+        <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+    </div>
+    <ul class="layui-nav left fast-add" lay-filter="">
+        <li class="layui-nav-item">
+            <a href="index.html">仪表盘</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd><a onclick="x_admin_show('资讯','index.html')"><i class="iconfont">&#xe6a2;</i>仪表盘1</a></dd>
+                <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>仪表盘2</a></dd>
+                <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>仪表盘3</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">查询</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>查询1</a></dd>
+                <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>查询2</a></dd>
+                <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>查询3</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="report.html">报表</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>报表1</a></dd>
+                <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>报表2</a></dd>
+                <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>报表3</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">OLAP</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>OLAP1</a>
+                </dd>
+                <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>OLAP2</a>
+                </dd>
+                <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>OLAP3</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">分析</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>分析1</a></dd>
+                <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>分析2</a></dd>
+                <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>分析3</a></dd>
+            </dl>
+        </li>
+    </ul>
+    <ul class="layui-nav right" lay-filter="">
+        <li class="layui-nav-item">
+            <a href="javascript:;">管理员</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd><a onclick="x_admin_show('个人信息','http://')">个人信息</a></dd>
+                <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+                <dd><a href="./login.html">退出</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item to-index"><a href="#">前台首页</a></li>
+    </ul>
+</div>
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<!-- 左侧菜单开始 -->
+<div class="left-nav">
+    <div id="side-nav">
+        <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>校级表</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="tables/table1.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>科研成果总量统计</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/table2.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>论文分类统计</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/table3.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>专利分类统计
+                            </cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/table4.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>文献收录类别统计
+                            </cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/table5.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>主持项目等级统计
+                            </cite>
+                        </a>
+                    </li><li>
+                        <a _href="tables/table6.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>获奖等级统计
+
+                            </cite>
+                        </a>
+                    </li>
+
+                </ul>
+            </li><li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>省级表</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="tables/stable1.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>科研成果总量统计</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/stable2.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>论文分类统计</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/stable3.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>专利分类统计
+                            </cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/stable4.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>文献收录类别统计
+                            </cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/stable5.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>主持项目等级统计
+                            </cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="tables/stable6.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>获奖等级统计
+
+                            </cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- <div class="x-slide_left"></div> -->
+<!-- 左侧菜单结束 -->
+<!-- 右侧主体开始 -->
+<div class="page-content">
+    <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+        <ul class="layui-tab-title">
+            <li>报表</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <iframe src='welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content-bg"></div>
+<!-- 右侧主体结束 -->
+<!-- 中部结束 -->
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="copyright">
+        <p>Copyright ©2018 科研系统 All Rights Reserved</p>
+    </div>
+</div>
+<!-- 底部结束 -->
+</body>
+
+</html>

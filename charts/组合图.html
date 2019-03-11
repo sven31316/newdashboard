@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+<div id="root" style="width: 100%; height: 800px;"></div>
+</body>
+<script type="text/javascript">
+    var my = echarts.init(document.getElementById("root"));
+    option = {
+        backgroundColor: '#404a59',
+        color: ['#ffd285', '#ff733f', '#ec4863'],
+        title: {
+            backgroundcolor: '#fff',
+            show: true,
+            text: '组合图',
+            link: '',
+            left: '40%',
+            top: '6%',
+            textStyle: {
+                color: '#ffd285'
+            }
+        },
+        tooltip: {},
+        legend: {
+            x: '30%',
+            bottom: '1%',
+            textStyle: {
+                color: '#ffd285'
+            },
+            data: [{
+                name: '郑州',
+                textStyle: {
+                    color: 'red'
+                }
+            }, {
+                name: '永城',
+                icon: 'circle',
+                textStyle: {
+                    color: 'red'
+                }
+            }, {
+                name: '新乡',
+                icon: 'circle',
+                textStyle: {
+                    color: 'red'
+                }
+            }],
+            backgroundColor: '#fff'
+        },
+        radar: {
+            name: {
+                show: true,
+                color: '#fffaaa'
+            },
+            indicator: [{
+                name: '销售',
+                max: 9500
+            }, {
+                name: '管理',
+                max: 16500
+            }, {
+                name: '信息技术',
+                max: 30000
+            }, {
+                name: '客服',
+                max: 38000
+            }, {
+                name: '研发',
+                max: 52000
+            }, {
+                name: '市场',
+                max: 25000,
+                color: '#ff6600'
+            }],
+            center: ['83%', '85%'],
+            radius: 80,
+            startAngle: 120,
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    type: 'solid'
+                }
+            }
+        },
+        grid: {
+            //show;true
+            left: '10%',
+            right: '45%',
+            top: '16%',
+            bottom: '16%',
+            containLabel: true
+        },
+        toolbox: {
+            show: false,
+            features: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            axisLine: {
+                onZero: false,
+                lineStyle: {
+                    color: '#fff'
+                }
+            }
+            ,
+            axisTick: {
+                show: true
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#ffd285'
+                }
+            },
+            splitArea: {
+                show: true
+            },
+            boundaryGap: true,
+            data: [
+                "jun",
+                "feb",
+                "mar",
+                "apr",
+                "may",
+                "jun",
+                "july"
+            ]
+        },
+        yAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#c0576d'
+                }
+            }
+            ,
+            splitLine: {
+                show: true,
+                lineStyle: {
+                    color: '#c0576d'
+                },
+
+                axisTick: {
+                    show: true
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#ffd285'
+                    }
+                },
+                type: 'value'
+            }
+        },
+        dataZoom: [{
+            type: 'slider',
+            show: true,
+            xAxisIndex: [0],
+            end: 100,
+            bottom: '10%',
+            startValue: 'feb'
+        }, {
+            type: 'slider',
+            show: true,
+            yAxisIndex: [0],
+            textStyle: {
+                color: '#ff6600'
+            },
+            left: '60%',
+            start: 0,
+            end: 100
+        }, {
+            type: 'inside',
+            xAxisIndex: [0],
+            start: 0,
+            end: 100
+        }, {
+            type: 'inside',
+            yAxisIndex: [0],
+            start: 0,
+            end: 100
+        }],
+        series: [{
+            name: '郑州',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+                normal: {
+                    color: '#ffff00',
+                    opacity: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#ff6600'
+                },
+                emphasis: {
+                    color: "#ff6600"
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: '#ff6600'
+                }
+            },
+            symbolSize: 8,
+            data: [10, 50, 39, 50, 120, 82, 80],
+            markPoint: {
+                label: {
+                    normal: {
+                        show: true,
+                        color: '#ff9900'
+                    }
+                },
+                emphasis: {
+                    show: true,
+                    color: '#ff9900'
+                },
+                data: [{
+                    name: '最大值',
+                    type: 'min'
+                }]
+            }
+
+        }, {
+            name: '永城',
+            smooth: true,
+            type: 'bar',
+            symbolSize: 8,
+            data: [70, 50, 50, 87, 90, 80, 70]
+        }, {
+            name: '新乡',
+            smooth: true,
+            type: 'bar',
+            symbolSize: 8,
+            data: [290, 200, 20, 132, 200, 15, 90]
+        }, {
+            type: 'pie',
+            name: '饼图',
+            center: ['83%', '20%'],
+            radius: ['15%', '20%'],
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a}<br/>{b}:{c}({d}%"
+            },
+            label: {
+                normal: {
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    color: '#ff6600'
+                }
+            },
+            data: [{
+                value: 335,
+                name: '污染来源',
+                itemStyle: {
+                    normal: {
+                        color: '#ffd285'
+                    }
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a}<br/>{b}:{c}({d}%"
+                },
+                label: {
+                    normal: {
+                        formatter: '{d}%',
+                        textStyle: {
+                            color: '#ffd285',
+                            fontSize: 20
+                        }
+                    }
+                }
+            }, {
+                value: 180,
+                name: 'zhanwei',
+                tooltip: {
+                    show: false
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#404a59'
+                    }
+                },
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: '#ffd285'
+                        },
+                        formatter: '\n汽车尾气'
+                    }
+                }
+            }]
+        }, {
+            type: 'pie',
+            center: ['83%', '50%'],
+            radius: ['15%', '20%'],
+            name: '饼图',
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a}<br/>{b}({d}%)"
+            },
+            data: [{
+                value: 335,
+                name: '直接访问',
+                itemStyle: {
+                    normal: {
+                        color: '#ff3300'
+                    }
+                }
+            }, {
+                value: 310,
+                name: '邮件营销',
+                itemStyle: {
+                    normal: {
+                        color: '#ffff00'
+                    }
+                }
+            }, {
+                value: 210,
+                name: '联盟广告',
+                itemStyle: {
+                    normal: {
+                        color: '#00ff00'
+                    }
+                }
+            }, {
+                value: 130,
+                name: '视频广告',
+                itemStyle: {
+                    normal: {
+                        color: '#1e90ff'
+                    }
+                }
+            }, {
+                value: 1530,
+                name: '搜索引擎',
+                itemStyle: {
+                    normal: {
+                        color: '#adff2f'
+                    }
+                }
+            }]
+        }, {
+            type: 'radar',
+            center: ['83%', '85%'],
+            symbolSize: 4,
+            symbolRotate: 120,
+            tooltip: {},
+            data: [{
+                value: [4300, 10000, 6800, 35000, 50000, 19000],
+                name: '预算分配'
+            }, {
+                value: [43200, 8000, 12200, 58000, 42220, 45300],
+                name: '实际开销'
+            }]
+        }]
+    };
+
+
+    my.setOption(option, true)
+</script>
+
+</html>

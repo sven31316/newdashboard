@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/echarts.js"></script>
+</head>
+
+<body>
+    <p>二、论文在EI SCIE ISTP SSCI 其他收录数量</p>
+    <div id="root" style='height: 800px;width: 100%'></div>
+</body>
+<script type="text/javascript">
+var myChart = echarts.init(document.getElementById("root"));
+option = {
+    title: {
+        text: 'basic rada'
+    },
+    tooltip: {},
+    legend: {
+        data: ['allocate buget', 'actual spend']
+    },
+    radar: {
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                baorderRadius: 3,
+                padding: [3, 5]
+            }
+        },
+        indicator: [
+            { name: 'sales', max: 6500 }, { name: 'administration', max: 16000 }, { name: 'infomation tech', max: 30000 }, { name: 'customer support', max: 38000 }, { name: 'develpment', max: 25000 }, { name: 'marketing', max: 52000 }
+        ]
+    },
+    series: [{
+        name: 'buget vs spendinng',
+        type: 'radar',
+        data: [{
+            value: [8500, 3222, 41112, 33333, 17777],
+            name: 'allocated buget'
+        }, {
+            value: [5000, 14000, 34300, 32444, 21000],
+            name: 'actual spending'
+        }]
+    }]
+};
+myChart.setOption(option);
+</script>
+
+</html>

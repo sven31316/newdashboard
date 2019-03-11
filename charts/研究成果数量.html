@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+<p>各学校研究成果数量随时间变化</p>
+<div id="root" style="width: 100%;height: 600px;"></div>
+</body>
+<script type="text/javascript">
+    $.getJSON('https://www.easy-mock.com/mock/5a472c8ccac9733415180409/yanjiu', function (data) {
+            console.log(data);
+            console.log(data.xueyuan);
+            console.log(data.xueyuan);
+            console.log(data.xueyuandata.tumu);
+
+            var mychart = echarts.init(document.getElementById("root"));
+            option = {
+                backgroundColor: "#404A59",
+                color: ['#ffd285', '#ff733f', '#ec4863'],
+                title: [{
+                    text: '各学校研究成果数量随时间变化',
+                    left: '1%',
+                    top: '6%',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }, {
+                    text: '环形图',
+                    left: '83%',
+                    top: '6%',
+                    textAlign: 'center',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }],
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    x: 300,
+                    top: '7%',
+                    textStyle: {
+                        color: '#ffd285'
+                    },
+                    data: data.xueyuan//三条线,三个学院
+                },
+                grid: {
+                    left: '1%',
+                    right: '35%',
+                    top: '16%',
+                    bottom: '6%',
+                    containLabel: true
+                },
+                toolbox: {
+                    "show": false,
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    "axisLine": {
+                        lineStyle: {
+                            color: '#ff4500'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    boundaryGap: false,
+                    data: data.month,
+                },
+                yAxis: {
+                    axisLine: {
+                        lineStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLable: {
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    type: 'value'
+                },
+                series: [{
+                    name: 'guanli',
+                    smooth: true,
+                    type: 'line',
+                    symbolSize: 8,
+                    symbol: 'circle',
+                    data: data.xueyuandata.guanli
+                }, {
+                    name: 'dianqi',
+                    smooth: true,
+                    type: 'line',
+                    symbolSize: 8,
+                    symbol: 'circle',
+                    data: data.xueyuandata.dianqi
+                }, {
+                    name: 'tumu',
+                    smooth: true,
+                    type: 'line',
+                    symbolSize: 8,
+                    symbol: 'circle',
+                    data: data.xueyuandata.tumu
+                }, {
+                    type: 'pie',
+                    center: ['83%', '33%'],
+                    radius: ['25%', '35%'],
+                    label: {
+                        normal: {
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 343,
+                        name: "用户来源分析",
+                        itemStyle: {
+                            normal: {
+                                color: '#ffd285'
+                            }
+                        },
+                        label: {
+                            normal: {
+                                formatter: '{d}%',
+                                textStyle: {
+                                    color: '#ffd285',
+                                    fontSize: 20
+                                }
+                            }
+                        }
+                    }, {
+                        value: 180,
+                        name: 'zhanwei',
+                        tooltip: {
+                            show: false
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#87cefa'
+                            }
+                        },
+                        label: {
+                            normal: {
+                                textStyle: {
+                                    color: '#ffd285'
+                                },
+                                formatter: '总的比例'
+                            }
+                        }
+                    }]
+                }, {
+                    type: 'pie',
+                    center: ['83%', '72%'],
+                    radius: ['25%', '30%'],
+                    label: {
+                        normal: {
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 435,
+                        name: '用户来源分析',
+                        itemStyle: {
+                            normal: {
+                                color: '#ff733f'
+                            }
+                        },
+                        label: {
+                            normal: {
+                                formatter: '{d}%',
+                                textStyle: {
+                                    color: '#ff733f',
+                                    fontSize: 20
+                                }
+                            }
+                        }
+                    }, {
+                        value: 100,
+                        name: 'zhanwei',
+                        tooltip: {
+                            show: false
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#87cefa'
+                            }
+                        },
+                        label: {
+                            normal: {
+                                textStyle: {
+                                    color: '#ff4500'
+                                },
+                                formatter: '\n合工大占比'
+                            }
+                        }
+                    }]
+                }
+                ]
+            };
+            mychart.setOption(option, true);
+        }
+    )
+</script>
+
+</html>
